@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEA/ROOM FOR ONE — NORITUAL LAB</title>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --muted: #7a7a72;
+    --light: #f5f4f0;
+    --border: #ddddd5;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 2.5rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-right {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* MAIN */
+  main { flex: 1; padding-top: 56px; }
+
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 56px);
+  }
+  .hero-image {
+    background: var(--light);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+  }
+  .hero-image .placeholder-img {
+    width: 100%;
+    height: 100%;
+    background: #e8e6e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .placeholder-img span {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hero-text {
+    padding: 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 0.5px solid var(--border);
+  }
+  .label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+  .hero-title span {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .hero-desc {
+    font-size: 14px;
+    line-height: 1.9;
+    color: #3a3a36;
+    max-width: 380px;
+    margin-bottom: 3rem;
+  }
+  .meta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .meta-item {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .meta-item .meta-label { color: var(--muted); min-width: 60px; }
+  .meta-item .meta-val { color: var(--ink); }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 0.5px solid var(--border);
+    margin: 0;
+  }
+
+  /* ABOUT SECTION */
+  .section {
+    padding: 6rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+  .section h2 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  .section p {
+    font-size: 14px;
+    line-height: 1.95;
+    color: #3a3a36;
+  }
+
+  /* DETAIL STRIP */
+  .detail-strip {
+    background: var(--light);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 4rem;
+  }
+  .detail-strip-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .detail-block {
+    border-left: 0.5px solid var(--border);
+    padding-left: 1.5rem;
+  }
+  .detail-block .d-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .detail-block .d-val {
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* BOOKING / CTA */
+  .cta-section {
+    padding: 7rem 4rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .cta-section .section-label { text-align: center; }
+  .cta-section h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .cta-section p {
+    font-size: 14px;
+    color: #3a3a36;
+    line-height: 1.95;
+    margin-bottom: 2.5rem;
+  }
+  .cta-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    border: 0.5px solid var(--ink);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .cta-btn:hover { background: var(--ink); color: var(--white); }
+
+  /* FOOTER */
+  footer {
+    position: sticky;
+    bottom: 0;
+    background: var(--white);
+    border-top: 0.5px solid var(--border);
+    padding: 0 2.5rem;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+  }
+  .footer-left {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .footer-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-link:hover { color: var(--ink); }
+  .footer-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-image { min-height: 50vw; }
+    .hero-text { padding: 3rem 1.5rem; border-left: none; border-top: 0.5px solid var(--border); }
+    .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+    .detail-strip-inner { grid-template-columns: 1fr; }
+    .detail-strip { padding: 3rem 1.5rem; }
+    .section { padding: 4rem 1.5rem; }
+    .cta-section { padding: 5rem 1.5rem; }
+    nav, footer { padding: 0 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Noritual Lab</a>
+  <span class="nav-right">Berlin, 2025</span>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-image">
+      <!-- Replace src with your actual image path -->
+      <img src="opening.jpg" alt="Tea/Room for One — Noritual Lab">
+    </div>
+    <div class="hero-text">
+      <p class="label">Noritual Lab presents</p>
+      <h1 class="hero-title">
+        <span></span>
+        TEA/ROOM FOR ONE
+      </h1>
+      <p class="hero-desc">
+        An immersive, 15-minute solo tea experience shaped around contemporary Japanese tea culture.
+        You enter alone. You prepare your own bowl of matcha. Sound, scent, and sculptural elements
+        surround you in a space designed for stillness.
+      </p>
+      <div class="meta-row">
+        <div class="meta-item">
+          <span class="meta-label">Dates</span>
+          <span class="meta-val">April 2–16, 2025</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Venue</span>
+          <span class="meta-val">GALERIE WASSER Berlin · Rosa-Luxemburg-Straße 16, 10178 Berlin, Germany</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Duration</span>
+          <span class="meta-val">15 minutes — one person</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ABOUT -->
+  <section class="section">
+    <p class="section-label">About the work</p>
+    <div class="two-col">
+      <div>
+        <h2>A moment designed<br>for one.</h2>
+        <p>
+          There is no group here, no audience, no instruction beyond the gentle logic of the space itself.
+          TEA/ROOM FOR ONE places you — alone — inside a carefully composed environment built around
+          the meditative rhythms of Japanese tea practice.
+        </p>
+      </div>
+      <div>
+        <p style="margin-bottom:1.5rem;">
+          You enter, orient yourself, and begin. A bowl. Matcha. Water at the right temperature.
+          Around you, sound is layered with silence. Scent moves slowly through the room.
+          Sculptural objects offer a visual language of pause.
+        </p>
+        <p>
+          This is an installation that asks nothing of you except presence.
+          It is, in that sense, a gift of time — 15 minutes that belong entirely to you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL STRIP -->
+  <div class="detail-strip">
+    <div class="detail-strip-inner">
+      <div class="detail-block">
+        <p class="d-label">Location</p>
+        <p class="d-val">GALERIE WASSER Berlin · Rosa-Luxemburg-Straße 16, 10178 Berlin, Germany</p>
+      </div>
+      <div class="detail-block">
+        <p class="d-label">Open</p>
+        <p class="d-val">April 2–16, 2025<br>By appointment</p>
+      </div>
+      <div class="detail-block">
+        <p class="d-label">Experience</p>
+        <p class="d-val">15 minutes<br>Solo — no group</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <p class="section-label">Reserve your time</p>
+    <h2>Book a Slot</h2>
+    <p>
+      Each session is individual and by appointment only.
+      Slots are limited. Arrive alone. The space is ready.
+    </p>
+    <!-- Replace href with your booking link -->
+    <a href="https://norituallab.youcanbook.me/" class="cta-btn">Request an appointment</a>
+  </div>
+
+</main>
+
+<!-- STICKY FOOTER -->
+<footer>
+  <span class="footer-left">© 2025 Noritual Lab</span>
+  <div class="footer-links">
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/noritual.lab" class="footer-link" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      Instagram
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@noritual.lab" class="footer-link" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+      </svg>
+      TikTok
+    </a>
+
+    <!-- Website -->
+    <a href="https://norituallab.de/" class="footer-link" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      Website
+    </a>
+
+  </div>
+</footer>
+
+</body>
+</html>
