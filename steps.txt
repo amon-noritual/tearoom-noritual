@@ -1,0 +1,20 @@
+Push your files from VS Code
+Since you're already in VS Code, this is easy. Open the terminal (Ctrl+``  ``) and run:
+bashgit init
+
+git add .
+git commit -m "initial commit"
+git branch -M main
+git remote add origin https://github.com/amon-noritual/tearoom-noritual.git
+git push -u origin main
+
+Enable GitHub Pages
+
+Go to your repo on GitHub
+Click Settings → Pages (left sidebar)
+Under "Source" select Deploy from a branch
+Choose main branch, folder / (root)
+Click Save
+
+Within ~60 seconds your site will be live at:
+https:/amon-noritual/.github.io/tearoom-noritual
