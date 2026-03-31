@@ -16,5 +16,18 @@ Under "Source" select Deploy from a branch
 Choose main branch, folder / (root)
 Click Save
 
-Within ~60 seconds your site will be live at:
-https:/amon-noritual/.github.io/tearoom-noritual
+Within ~60 seconds your site will be live at: https://amon-noritual.github.io/tearoom-noritual/
+
+site is live! Now for the QR code — quickest way:
+
+Go to qrcode-monkey.com
+Paste your URL: https://amon-noritual.github.io/tearoom-noritual/
+Click "Create QR Code"
+Click "Download PNG" — choose the highest resolution for printing (at least 1000px)
+
+That's it — print-ready QR code in under a minute.
+Tips for printing:
+
+Download as SVG if you plan to print large (it scales infinitely without losing quality)
+Make sure the QR code is at least 3×3 cm on the printed page so phones can scan it easily
+Leave a small white border around it — scanners need the quiet zone to read it correctly
