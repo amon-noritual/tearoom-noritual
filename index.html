@@ -79,22 +79,6 @@
     display: block;
     filter: grayscale(20%);
   }
-  .hero-image .placeholder-img {
-    width: 100%;
-    height: 100%;
-    background: #e8e6e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .placeholder-img span {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
   .hero-text {
     padding: 5rem 4rem;
     display: flex;
@@ -154,11 +138,112 @@
     margin: 0;
   }
 
-  /* ABOUT SECTION */
-  .section {
-    padding: 6rem 4rem;
-    max-width: 1100px;
-    margin: 0 auto;
+  /* T-ROOM IMAGE+TEXT SECTION */
+  .troom-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .troom-left {
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+    border-right: 0.5px solid var(--border);
+  }
+  .troom-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(15%);
+  }
+  .troom-right {
+    background: #faf9f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem;
+  }
+  .troom-words {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .troom-words p {
+    margin: 0;
+    font-size: inherit;
+    color: inherit;
+    line-height: inherit;
+  }
+
+  /* T-ROOM LOWER IMAGES */
+  .troom-lower {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 0.5px solid var(--border);
+    min-height: 380px;
+  }
+  .troom-lower-img {
+    overflow: hidden;
+    position: relative;
+  }
+  .troom-lower-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(15%);
+  }
+  .troom-lower-img + .troom-lower-img {
+    border-left: 0.5px solid var(--border);
+  }
+  .troom-credits {
+    border-left: 0.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem 2.5rem;
+    background: var(--white);
+  }
+  .troom-credits p {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    line-height: 1.9;
+    color: var(--muted);
+    text-align: right;
+  }
+  .troom-credits a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .troom-credits a:hover { color: var(--ink); }
+
+  /* ABOUT SECTION — full-bleed grid with image on left edge */
+  .about-section {
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .about-img {
+    overflow: hidden;
+    position: relative;
+    min-height: 480px;
+    border-right: 0.5px solid var(--border);
+  }
+  .about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+  }
+  .about-col {
+    padding: 5rem 4rem;
+  }
+  .about-col:first-of-type {
+    border-right: 0.5px solid var(--border);
   }
   .section-label {
     font-size: 10px;
@@ -166,23 +251,22 @@
     text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 2.5rem;
+    display: block;
   }
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-  }
-  .section h2 {
+  .about-col h2 {
     font-size: 1.4rem;
     font-weight: 300;
     letter-spacing: 0.05em;
     line-height: 1.5;
     margin-bottom: 1.5rem;
   }
-  .section p {
+  .about-col p {
     font-size: 14px;
     line-height: 1.95;
     color: #3a3a36;
+  }
+  .about-col p + p {
+    margin-top: 1.5rem;
   }
 
   /* DETAIL STRIP */
@@ -295,12 +379,18 @@
     .hero { grid-template-columns: 1fr; }
     .hero-image { min-height: 50vw; }
     .hero-text { padding: 3rem 1.5rem; border-left: none; border-top: 0.5px solid var(--border); }
-    .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
     .detail-strip-inner { grid-template-columns: 1fr; }
     .detail-strip { padding: 3rem 1.5rem; }
-    .section { padding: 4rem 1.5rem; }
     .cta-section { padding: 5rem 1.5rem; }
     nav, footer { padding: 0 1.5rem; }
+    .troom-section { grid-template-columns: 1fr; }
+    .troom-left { min-height: 60vw; border-right: none; border-bottom: 0.5px solid var(--border); }
+    .troom-lower { grid-template-columns: 1fr 1fr; }
+    .troom-credits { grid-column: 1 / -1; border-left: none; border-top: 0.5px solid var(--border); }
+    .about-section { grid-template-columns: 1fr; }
+    .about-img { min-height: 60vw; border-right: none; border-bottom: 0.5px solid var(--border); }
+    .about-col { padding: 3rem 1.5rem; }
+    .about-col:first-of-type { border-right: none; border-bottom: 0.5px solid var(--border); }
   }
 </style>
 </head>
@@ -316,7 +406,6 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-image">
-      <!-- Replace src with your actual image path -->
       <img src="opening.jpg" alt="Tea/Room for One — Noritual Lab">
     </div>
     <div class="hero-text">
@@ -349,29 +438,68 @@
 
   <hr class="divider">
 
-  <!-- ABOUT -->
-  <section class="section">
-    <p class="section-label">About the work</p>
-    <div class="two-col">
-      <div>
-        <h2>A moment designed<br>for one.</h2>
-        <p>
-          There is no group here, no audience, no instruction beyond the gentle logic of the space itself.
-          TEA/ROOM FOR ONE places you — alone — inside a carefully composed environment built around
-          the meditative rhythms of Japanese tea practice.
-        </p>
+  <!-- T-ROOM: TEXT + TREE IMAGE -->
+  <section class="troom-section">
+    <div class="troom-right">
+      <div class="troom-words">
+        <p>Sound</p>
+        <p>Scent</p>
+        <p>sculptural objects</p>
       </div>
-      <div>
-        <p style="margin-bottom:1.5rem;">
-          You enter, orient yourself, and begin. A bowl. Matcha. Water at the right temperature.
-          Around you, sound is layered with silence. Scent moves slowly through the room.
-          Sculptural objects offer a visual language of pause.
-        </p>
-        <p>
-          This is an installation that asks nothing of you except presence.
-          It is, in that sense, a gift of time — 15 minutes that belong entirely to you.
-        </p>
-      </div>
+    </div>
+    <div class="troom-left">
+      <img src="tree.jpg" alt="Sculptural tree installation">
+    </div>
+  </section>
+
+  <!-- T-ROOM: TWO SMALLER IMAGES + CREDITS -->
+  <div class="troom-lower">
+    <div class="troom-lower-img">
+      <img src="tables.jpg" alt="Tea objects and tables">
+    </div>
+    <div class="troom-lower-img">
+      <img src="sitting.jpg" alt="Person preparing tea">
+    </div>
+    <div class="troom-credits">
+      <p>
+        photographed <a href="https://www.instagram.com/r.damisch" target="_blank">@r.damisch</a><br>
+        talent <a href="https://www.instagram.com/kana_tiala_pink" target="_blank">@kana_tiala_pink</a><br>
+        <br>
+        sculptural objects <a href="https://www.instagram.com/studio_mad_berlin" target="_blank">@studio_mad_berlin</a><br>
+        natural elements <a href="https://www.instagram.com/feverfewwww" target="_blank">@feverfewwww</a><br>
+        light design <a href="https://www.instagram.com/vincentmoreau_" target="_blank">@vincentmoreau_</a><br>
+        room scent <a href="https://www.instagram.com/aoiro.air" target="_blank">@aoiro.air</a><br>
+        creative concept <a href="https://www.instagram.com/loooyuk" target="_blank">@loooyuk</a>
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ABOUT — image flush left, label + text in columns beside it -->
+  <section class="about-section">
+    <div class="about-img">
+      <img src="drinking.jpg" alt="Tea experience">
+    </div>
+    <div class="about-col">
+      <span class="section-label">About the experience</span>
+      <h2>A moment designed<br>for one.</h2>
+      <p>
+        There is no group here, no audience, no instruction beyond the gentle logic of the space itself.
+        TEA/ROOM FOR ONE places you — alone — inside a carefully composed environment built around
+        the meditative rhythms of Japanese tea practice.
+      </p>
+    </div>
+    <div class="about-col">
+      <p>
+        You enter, orient yourself, and begin. A bowl. Matcha. Water at the right temperature.
+        Around you, sound is layered with silence. Scent moves slowly through the room.
+        Sculptural objects offer a visual language of pause.
+      </p>
+      <p>
+        This is an installation that asks nothing of you except presence.
+        It is, in that sense, a gift of time — 15 minutes that belong entirely to you.
+      </p>
     </div>
   </section>
 
@@ -388,7 +516,7 @@
       </div>
       <div class="detail-block">
         <p class="d-label">Experience</p>
-        <p class="d-val">15 minutes<br>Solo — no group</p>
+        <p class="d-val">Solo<br>15 minutes</p>
       </div>
     </div>
   </div>
@@ -401,7 +529,6 @@
       Each session is individual and by appointment only.
       Slots are limited. Arrive alone. The space is ready.
     </p>
-    <!-- Replace href with your booking link -->
     <a href="https://noritulabtearoom.youcanbook.me/" class="cta-btn">Request an appointment</a>
   </div>
 
@@ -411,8 +538,6 @@
 <footer>
   <span class="footer-left">© 2026 Noritual Lab</span>
   <div class="footer-links">
-
-    <!-- Instagram -->
     <a href="https://www.instagram.com/noritual.lab" class="footer-link" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -421,24 +546,19 @@
       </svg>
       Instagram
     </a>
-
-    <!-- TikTok -->
     <a href="https://www.tiktok.com/@noritual.lab" class="footer-link" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
         <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
       </svg>
       TikTok
     </a>
-
-    <!-- Website -->
     <a href="https://norituallab.de/" class="footer-link" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="10"/>
-        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/>
       </svg>
       Website
     </a>
-
   </div>
 </footer>
 
